@@ -1,0 +1,36 @@
+body{
+    background-color: black;
+    color: white;
+
+    
+}
+.contenedor-estetica{
+    display: flex;
+     text-align: center;
+
+     justify-content: space-evenly;
+}
+
+.imagen{
+    width: 2px;
+    border-radius: 10px;
+}
+
+#servicios{
+    display: grid;
+    grid-template-columns:repeat(2, 200px);
+    grid-template-rows: repeat(2, 100px);
+}
+
+.servicio{
+    border-radius: 10px;
+    background-color: rgb(77, 76, 74);
+    margin: 3px 3px;
+}
+.servicio:hover {
+    filter: grayscale(80%);
+}
+
+.app{
+    width: 100%;
+}

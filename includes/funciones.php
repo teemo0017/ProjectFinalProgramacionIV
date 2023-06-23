@@ -16,5 +16,3 @@ function obtener_servicios() {
         var_dump($th);
     }
 }
-
-obtener_servicios();

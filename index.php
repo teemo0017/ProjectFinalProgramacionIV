@@ -2,6 +2,7 @@
 session_start();
 require __DIR__ . '/includes/funciones.php';
 $consulta = obtener_servicios();
+$consulta2 = obtener_servicios();
 ?>
 
 <!-- Head -->

@@ -2,14 +2,14 @@
                 <p class="sub-titulo">Elige tus Servicios a Continuación - Resultados(<?php echo mysqli_num_rows($consulta)?>)</p>
                 
                     <div id="servicios">
-                    <?php  while ($servicio = mysqli_fetch_assoc($consulta)) { ?>
+                    <?php  while($servicio = mysqli_fetch_assoc($consulta)) { ?>
                         <form action="cart.php" method="post" name="formulario" >
                         <div class="servicio">
                             <img class="imagen-servicio" src="./build/img/imgs/<?php echo $servicio['id']; ?>.jpg" alt="">
                             <div class="infomacion-servicios">
                                 
                              <input name='id' type="hidden" value="<?php echo $servicio['id']; ?>">
-
+                             <input name='cantidad' type="hidden" value="1">
                                 <p class="nombre-servicio"><?php echo $servicio['nombre']; ?></p>
                                 <input name='nombre' type="hidden" value="<?php echo $servicio['nombre']; ?>">
 
@@ -20,12 +20,15 @@
 
                                
                                 <button type="submit" class='btn'>Anadir al carrito</button>
-                                
 
-                    
                             </div>                   
                         </div> 
                         </form>                   
                     <?php } ?>
                     </div>
+            </div>
+
+            <div class="">
+
+            
             </div>

@@ -3,6 +3,7 @@ session_start();
 require __DIR__ . '/includes/funciones.php';
 $consulta = obtener_servicios();
 $consulta2 = obtener_servicios();
+$_SESSION['pagina']='index.php';
 ?>
 
 <!-- Head -->
@@ -28,8 +29,9 @@ $consulta2 = obtener_servicios();
     <script src="./build/js/js.js"></script>
 
 </body>
-'
+
    <!-- FOOTER -->
    <?php include('./includes/commons/footer.php') ?>
 
 </html>
+

@@ -1,60 +1,33 @@
 <?php
 session_start();
 
+if (isset($_POST['btn-compra'])) {
 
-if($_SERVER['REQUEST_METHOD']=='POST'){
 
-  if(isset($_SESSION['carrito'])){
-    $carrito_mio = $_SESSION['carrito'];
-    if(isset($_POST['titulo'])){
-      $id= $_POST['id'];
-      $nombre = $_POST['nombre'];
-      $precio = $_POST['precio'];
-      $cantidad = $_POST['cantidad'];
-      $donde = -1;
-      if($donde != -1){
-        $cuanto = $carrito_mio[$donde]['cantidad'];
+  switch ($_POST['btn-compra']) {
+
+    case 'agregar': 
+      if (!isset($_SESSION['CARRITO'])) {
+        $producto = array(
+          'id' => $_POST['id'],
+          'nombre' => $_POST['nombre'],
+          'precio' => $_POST['precio'],
+          'cantidad' => $_POST['cantidad']
+        );
+
+        $_SESSION['CARRITO'][1] = $producto;
+      }else{
+        $numeroProductos = count($_SESSION['CARRITO']);
+
+        $producto = array(
+          'id' => $_POST['id'],
+          'nombre' => $_POST['nombre'],
+          'precio' => $_POST['precio'],
+          'cantidad' => $_POST['cantidad']
+        );
+        $_SESSION['CARRITO'][$numeroProductos+1] = $producto;
       }
-    }
-
-  }
-  else{
-
-    $id= $_POST['id'];
-    $nombre = $_POST['nombre'];
-    $precio = $_POST['precio'];
-    $cantidad = $_POST['cantidad'];
-  
-  
-    //inyectando array con valores post.
-    $carritoNuevo[] = array(
-      'id'=>$id,
-      "nombre"=>$nombre,
-      "precio"=>$precio,
-      "cantidad"=>$cantidad
-    );
-  
-    $carritoNuevo[]=array(
-      'id'=>$id,
-      "nombre"=>'W',
-      "precio"=>$precio,
-      "cantidad"=>$cantidad
-    );
-
-    $carritoNuevo[]=array(
-      'id'=>$id,
-      "nombre"=>'S',
-      "precio"=>$precio,
-      "cantidad"=>$cantidad
-    );
-    
-    echo "<pre>";
-    var_dump($carritoNuevo);
-    echo "</pre>";
   }
 
-}else{
-  echo 'estamos en no lo estamos';
-
+  header("Location: ".$_SERVER['HTTP_REFERER']."");
 }
-?>

@@ -1,7 +1,7 @@
 <?php
 session_start();
 require __DIR__ . '/includes/funciones.php';
-$_SESSION['pagina']='mostrarcarrito.php';
+$_SESSION['pagina'] = 'mostrarcarrito.php';
 $consulta2 = obtener_servicios();
 ?>
 
@@ -10,38 +10,52 @@ $consulta2 = obtener_servicios();
 <!-- Header -->
 <?php include('./includes/commons/header.php') ?>
 
-<body class="">
+<body >
+    
+  <div class="h1 container mt-5">Mi carrito</div>
+  <?php if(isset($_SESSION['CARRITO'])){?>
+  <table class=" table table-bordered container shadow-lg ">
+    <thead class=" ">
+      <tr class="text-center">
+        <th width='40%' scope="col">Producto</th>
+        <th  width='15%' scope="col">precio</th>
+        <th  width='20%' scope="col">Cantidad</th>
+        <th  width='20%' scope="col">Total</th>
+        <th  width='5%' scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php $total = 0;
+       foreach($_SESSION['CARRITO'] as $indice=>$producto) { ?>
+        <tr>
+          <td  width='40%'><?php echo $producto['nombre'] ?></td>
+          <td class="text-center" width='15%'><?php echo "$", number_format($producto['precio'],2) ?></td>
+          <td class="text-center" width='20%'><?php echo $producto['cantidad'] ?></td>
+          <td class="text-center" width='20%'><?php echo "$", number_format($producto['precio']*$producto['cantidad'],2)?></td>
+          <td class="text-center" width='5%'><button type="button" class="btn btn-danger">ELIMINAR</button></td>
+        </tr>
+        
+      <?php
+      $total = $total+($producto['precio']*$producto['cantidad']);
+     } ?>
+      <tr>
+        <td colspan="3" align="right" ><h3>Total</h3></td>
+        <td align="right" ><h3><?php echo number_format($total,2); ?></h3></td>
+       
+      </tr>
+    </tbody>
+  </table>
+<?php }else { ?>
 
-
-<table class="table container  my-5">
-  <thead class=" ">
-    <tr>
-      <th scope="col">Producto</th>
-      <th scope="col">precio</th>
-      <th scope="col">Cantidad</th>
-      <th scope="col">Total</th>
-    </tr>
-  </thead>
-  <tbody>
-  <?php  for($i=1;$i<=count($_SESSION['CARRITO']);$i++){ ?>
-    <tr>
-      <td><?php echo $_SESSION['CARRITO'][$i]['nombre']?></td>
-      <td><?php echo "$",$_SESSION['CARRITO'][$i]['precio'],".00"?></td>
-      <td><?php echo $_SESSION['CARRITO'][$i]['cantidad']?></td>
-    </tr>
+<div class="container">
+    <div class="alert alert-success" > No tienes ningun producto en tu carrito :(</div>
+</div>
 <?php } ?>
-
-
-  </tbody>
-</table>
-
-
-
-
-
+  <script src="./build/js/js.js"></script>
 </body>
 
-   <!-- FOOTER -->
-   <?php include('./includes/commons/footer.php') ?>
+<!-- FOOTER -->
+<?php include('./includes/commons/footer.php') ?>
+
 
 </html>

@@ -18,7 +18,6 @@ if (isset($_POST['btn-compra'])) {
         $_SESSION['CARRITO'][1] = $producto;
       }else{
         $numeroProductos = count($_SESSION['CARRITO']);
-
         $producto = array(
           'id' => $_POST['id'],
           'nombre' => $_POST['nombre'],

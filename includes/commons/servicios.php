@@ -18,7 +18,7 @@
                                 <p class="info-servicio">  Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, possimus iusto quis fuga optio ducimus fugit! Corporis dicta voluptatem, esse nihil numquam iure </p>
 
                                
-                                <button type="submit" name='btn-compra' value="agregar" class='btn'>Anadir al carrito</button>
+                                <button type="submit" name='btn-compra' value="agregar" class='btn-index'>Anadir al carrito</button>
 
                             </div>                   
                         </div> 

@@ -13,8 +13,8 @@ $consulta2 = obtener_servicios();
 <body >
     
   <div class="h1 container mt-5">Mi carrito</div>
-  <?php if(isset($_SESSION['CARRITO'])){?>
-  <table class=" table table-bordered container shadow-lg ">
+  <?php if(isset($_SESSION['CARRITO']) && count($_SESSION['CARRITO'])>= 1){?>
+  <table class=" table table-bordered container shadow-lg py-5 px-5 ">
     <thead class=" ">
       <tr class="text-center">
         <th width='40%' scope="col">Producto</th>
@@ -32,7 +32,13 @@ $consulta2 = obtener_servicios();
           <td class="text-center" width='15%'><?php echo "$", number_format($producto['precio'],2) ?></td>
           <td class="text-center" width='20%'><?php echo $producto['cantidad'] ?></td>
           <td class="text-center" width='20%'><?php echo "$", number_format($producto['precio']*$producto['cantidad'],2)?></td>
-          <td class="text-center" width='5%'><button type="button" class="btn btn-danger">ELIMINAR</button></td>
+          <form action="./cart.php"  method="post">
+
+            <td class="text-center" width='5%'>
+              <button type="submit" name="btn-compra" value="eliminar" class="btn btn-danger">ELIMINAR</button></td>
+
+              <input name="id" type="hidden" value="<?php echo $producto['id']?> ">
+          </form>
         </tr>
         
       <?php

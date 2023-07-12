@@ -1,20 +1,20 @@
 <?php 
      $pagina = $_SESSION['pagina'];
     ?>
-<header class="<?php echo($pagina==='mostrarcarrito.php')? 'header-sin-imagen':'header-imagen';?>">
+<header class="<?php echo($pagina==='index.php')? 'header-imagen':'header-sin-imagen';?>">
 
     <nav class="barra-navegacion">
         <img src="build/img/logo.webp" width="75" height="75" alt="">
 
         <ul class="barra-opciones">
-                <?php echo($pagina==='mostrarcarrito.php')? '<li><a href="./" class="botones-opciones">Inicio</a></li>':"";?>
+                <?php echo($pagina !='index.php')? '<li><a href="./" class="botones-opciones">Inicio</a></li>':"";?>
             <li><a href="#" class="botones-opciones">Sobre Nosotros</a></li>
             <li class="nav-item dropdown">
                 <a  class="botones-opciones " data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Servicios</a>
                 <div class="dropdown-menu">
                     <?php while($servicio = mysqli_fetch_assoc($consulta2)) { ?>
                         
-                        <a class="dropdown-item" href="infoservicios.php?nombre=<?php echo $servicio['nombre'];?>&id=<?php echo $servicio['id'];?>"><?php echo $servicio['nombre'] ?></a>
+                        <a class="dropdown-item" href="./infoservicios.php?nombre=<?php echo $servicio['nombre'];?>&id=<?php echo $servicio['id'];?>"><?php echo $servicio['nombre'] ?></a>
                         <div class="dropdown-divider"></div>
                         <?php }; ?>
                     </div>               
